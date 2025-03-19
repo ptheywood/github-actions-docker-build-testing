@@ -1,0 +1,22 @@
+# Build a docker container in CI to see if this errors or not. 
+
+name: docker
+
+on:
+  push:
+
+jobs:
+  docker-build:
+    strategy:
+      matrix:
+        os: [ubuntu-24.04, ubuntu-24.04-arm]
+
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build
+        run: |
+          docker build . -t foo-${{ matrix.os }}
+      - name: list docker images. 
+        run: |
+          docker image ls
