@@ -2,7 +2,8 @@
 
 # Roughly matching / inspired by https://github.com/celeritas-project/celeritas/blob/develop/scripts/docker/dev/Dockerfile as this is the base of the actual intended target.
 
-FROM rockylinux:9 AS builder
+# FROM rockylinux:9 AS builder
+FROM nvidia/cuda:12.6.3-devel-rockylinux9 AS builder
 
 ENV DEBIAN_FRONTEND=noninteractive \
     SPACK_ROOT=/opt/spack
